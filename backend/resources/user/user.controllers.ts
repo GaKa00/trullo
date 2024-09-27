@@ -247,16 +247,13 @@ export async function adminLevelUpdate(req: ExtendedRequest, res: Response) {
   const { id, name, email, password, project } = req.body;
 
   try {
-    const userId = req.user?.id;
-    const userRole = req.user?.role;
-
-    console.log("Decoded user from token:", req.user);
+  
 
 
-    if (!userId) {
+    if (!req.user?.id) {
       return res.status(401).json({ message: "Not logged in." });
     }
-    if (userRole !== "admin") {
+    if (req.user?.role !== "admin") {
       return res.status(401).json({ message: "Unauthorized" });
     }
 

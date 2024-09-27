@@ -36,6 +36,6 @@ router.delete("/users", deleteAllUsers);
 // Route to update a user by ID
 router.put("/users/:id", updateValidation, updateUser);
 
-router.put("users/admin", adminValidation, protect, adminLevelUpdate);
+router.put("users/admin", protect, adminValidation, adminLevelUpdate);
 
 export default router;
